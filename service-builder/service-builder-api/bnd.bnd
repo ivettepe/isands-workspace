@@ -1,0 +1,12 @@
+Bundle-Name: service-builder-api
+Bundle-SymbolicName: com.isands.service.builder.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.isands.service.builder.exception,\
+	com.isands.service.builder.model,\
+	com.isands.service.builder.service,\
+	com.isands.service.builder.service.persistence
+-check: EXPORTS
+-consumer-policy: ${replacestring;${range;[==,==]};.*,(.*)];$1}
+-includeresource: META-INF/service.xml=../service-builder-service/service.xml
+-provider-policy: ${replacestring;${range;[==,==]};.*,(.*)];$1}

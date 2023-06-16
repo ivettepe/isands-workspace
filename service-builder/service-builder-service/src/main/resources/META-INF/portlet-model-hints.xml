@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<hint-collection name="personName">
+		<hint name="max-length">100</hint>
+	</hint-collection>
+	<hint-collection name="Textarea">
+		<hint name="display-height">155</hint>
+		<hint name="display-width">500</hint>
+		<hint name="max-length">5000</hint>
+		<hint name="editor">true</hint>
+	</hint-collection>
+	<model name="com.isands.service.builder.model.ElectroEmployee">
+		<field name="mvccVersion" type="long" />
+		<field name="id" type="long" />
+		<field name="ElectroTypeId" type="long" />
+		<field name="employeeId" type="long" />
+		<field name="companyId" type="long" />
+	</model>
+	<model name="com.isands.service.builder.model.Electronics">
+		<field name="mvccVersion" type="long" />
+		<field name="electronicsId" type="long" />
+		<field name="name" type="String">
+			<hint name="max-length">150</hint>
+		</field>
+		<field name="ElectroTypeId" type="long" />
+		<field name="price" type="long" />
+		<field name="count" type="int" />
+		<field name="inStock" type="boolean" />
+		<field name="archive" type="boolean" />
+		<field name="description" type="String">
+			<hint-collection name="Textarea" />
+		</field>
+		<field name="companyId" type="long" />
+	</model>
+	<model name="com.isands.service.builder.model.ElectroType">
+		<field name="mvccVersion" type="long" />
+		<field name="electroTypeId" type="long" />
+		<field name="name" type="String">
+			<hint name="max-length">100</hint>
+		</field>
+		<field name="companyId" type="long" />
+	</model>
+	<model name="com.isands.service.builder.model.Employee">
+		<field name="mvccVersion" type="long" />
+		<field name="employeeId" type="long" />
+		<field name="lastName" type="String">
+			<hint-collection name="personName" />
+		</field>
+		<field name="firstName" type="String">
+			<hint-collection name="personName" />
+		</field>
+		<field name="patronymic" type="String">
+			<hint-collection name="personName" />
+		</field>
+		<field name="birthDay" type="Date" />
+		<field name="positionId" type="long" />
+		<field name="gender" type="int" />
+		<field name="companyId" type="long" />
+	</model>
+	<model name="com.isands.service.builder.model.PositionType">
+		<field name="mvccVersion" type="long" />
+		<field name="positionTypeId" type="long" />
+		<field name="name" type="String">
+			<hint name="max-length">100</hint>
+		</field>
+		<field name="companyId" type="long" />
+	</model>
+	<model name="com.isands.service.builder.model.Purchase">
+		<field name="mvccVersion" type="long" />
+		<field name="purchaseId" type="long" />
+		<field name="electronicsId" type="long" />
+		<field name="employeeId" type="long" />
+		<field name="purchaseDate" type="Date">
+			<hint name="year-range-future">false</hint>
+		</field>
+		<field name="count" type="int" />
+		<field name="companyId" type="long" />
+		<field name="purchaseTypeId" type="long" />
+	</model>
+	<model name="com.isands.service.builder.model.PurchaseType">
+		<field name="mvccVersion" type="long" />
+		<field name="purchaseTypeId" type="long" />
+		<field name="name" type="String">
+			<hint name="max-length">100</hint>
+		</field>
+		<field name="companyId" type="long" />
+	</model>
+</model-hints>

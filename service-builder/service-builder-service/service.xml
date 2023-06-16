@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.3.0//EN"
+        "http://www.liferay.com/dtd/liferay-service-builder_7_3_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="com.isands.service.builder" mvcc-enabled="true">
+    <namespace>isands</namespace>
+    <entity name="PositionType" local-service="true" remote-service="false">
+        <column name="positionTypeId" primary="true" type="long"/>
+        <column name="name" type="String"/>
+        <column name="companyId" type="long"/>
+        <finder name="name" return-type="Collection">
+            <finder-column name="name"/>
+        </finder>
+    </entity>
+    <entity name="PurchaseType" local-service="true" remote-service="false">
+        <column name="purchaseTypeId" primary="true" type="long"/>
+        <column name="name" type="String"/>
+        <column name="companyId" type="long"/>
+        <finder name="name" return-type="Collection">
+            <finder-column name="name"/>
+        </finder>
+    </entity>
+    <entity name="Employee" local-service="true" remote-service="false">
+        <column name="employeeId" primary="true" type="long"/>
+        <column name="lastName" type="String"/>
+        <column name="firstName" type="String"/>
+        <column name="patronymic" type="String"/>
+        <column name="birthDay" type="Date"/>
+        <column name="positionId" type="long"/>
+        <column name="gender" type="int"/>
+        <column name="companyId" type="long"/>
+        <!--        <column name="ElectroTypeId" type="Collection" entity="ElectroType" mapping-table="ElectroEmployee"/>-->
+        <finder name="employeeId" return-type="Collection">
+            <finder-column name="employeeId"/>
+        </finder>
+        <finder name="ByFullName" return-type="Employee" unique="true">
+            <finder-column name="firstName"/>
+            <finder-column name="lastName"/>
+            <finder-column name="patronymic"/>
+        </finder>
+        <finder name="PositionId" return-type="Collection">
+            <finder-column name="positionId"/>
+        </finder>
+    </entity>
+    <entity name="ElectroType" local-service="true" remote-service="false">
+        <column name="electroTypeId" primary="true" type="long"/>
+        <column name="name" type="String"/>
+        <column name="companyId" type="long"/>
+        <!--        <column name="EmployeeId" type="Collection" entity="Employee" mapping-table="ElectroEmployee"/>-->
+        <finder name="name" return-type="Collection">
+            <finder-column name="name"/>
+        </finder>
+    </entity>
+    <entity name="Electronics" local-service="true" remote-service="false">
+        <column name="electronicsId" primary="true" type="long"/>
+        <column name="name" type="String"/>
+        <column name="ElectroTypeId" type="long"/>
+        <column name="price" type="long"/>
+        <column name="count" type="int"/>
+        <column name="inStock" type="boolean"/>
+        <column name="archive" type="boolean"/>
+        <column name="description" type="String"/>
+        <column name="companyId" type="long"/>
+        <finder name="ElectronicsName" return-type="Collection">
+            <finder-column name="name"/>
+        </finder>
+        <finder name="Name" return-type="Electronics" unique="true">
+            <finder-column name="name"/>
+        </finder>
+        <finder name="ElectroType" return-type="Collection">
+            <finder-column name="ElectroTypeId"/>
+        </finder>
+    </entity>
+    <entity name="ElectroEmployee" local-service="true" remote-service="false">
+        <column name="id" type="long" primary="true"/>
+        <column name="ElectroTypeId" type="long"/>
+        <column name="employeeId" type="long"/>
+        <column name="companyId" type="long"/>
+        <finder name="Employee" return-type="Collection">
+            <finder-column name="ElectroTypeId"/>
+        </finder>
+        <finder name="ElectroType" return-type="Collection">
+            <finder-column name="employeeId"/>
+        </finder>
+    </entity>
+    <entity name="Purchase" local-service="true" remote-service="false">
+        <column name="purchaseId" primary="true" type="long"/>
+        <column name="electronicsId" type="long"/>
+        <column name="employeeId" type="long"/>
+        <column name="purchaseDate" type="Date"/>
+        <column name="count" type="int"/>
+        <column name="companyId" type="long"/>
+        <column name="purchaseTypeId" type="long"/>
+        <order>
+            <order-column name="purchaseDate" order-by="desc"/>
+        </order>
+        <finder name="EmployeeId" return-type="Collection">
+            <finder-column name="employeeId"/>
+        </finder>
+        <finder name="ElectronicsId" return-type="Collection">
+            <finder-column name="electronicsId"/>
+        </finder>
+        <finder name="EmployeeIdElectronicsId" return-type="Collection">
+            <finder-column name="employeeId"/>
+            <finder-column name="electronicsId"/>
+        </finder>
+    </entity>
+
+    <exceptions>
+        <exception>EmptyField</exception>
+        <exception>EmptyPersonName</exception>
+        <exception>IllegalFieldValue</exception>
+        <exception>IllegalPriceValue</exception>
+        <exception>IllegalElectronicsCountValue</exception>
+        <exception>InvalidBirthDay</exception>
+        <exception>InvalidPurchaseDate</exception>
+        <exception>IllegalReference</exception>
+        <exception>ConsistencyViolation</exception>
+        <exception>ElectronicsIsOutOfStock</exception>
+        <exception>ElectronicsIsArchived</exception>
+        <exception>EmployeeIsNotResponsible</exception>
+        <exception>UnsupportedPaymentType</exception>
+        <exception>WrongAmountOfElectronics</exception>
+    </exceptions>
+</service-builder>
