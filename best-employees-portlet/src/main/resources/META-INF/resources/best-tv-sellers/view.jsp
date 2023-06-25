@@ -56,6 +56,10 @@
     }
     Comparator<Integer> comparator = (c1, c2) -> c2.compareTo(c1);
     count.sort(comparator);
+    int allTvs = 0;
+    for (int current : count) {
+        allTvs += current;
+    }
     int iterator = 0;
 %>
 <p>

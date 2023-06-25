@@ -15,6 +15,7 @@
         <module>service-builder</module>
         <module>web-module-portlet</module>
         <module>best-employees-portlet</module>
+        <module>statistic</module>
     </modules>
     <properties>
         <liferay.repository.url>https://repository-cdn.liferay.com/nexus/content/groups/public/</liferay.repository.url>
