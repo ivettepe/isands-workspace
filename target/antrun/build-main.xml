@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="maven-antrun-" default="main">
+  <target name="main">
+    <mkdir dir="C:\Users\User\IdeaProjects\isands-workspace/bundles/osgi/modules/lib" />
+    <copy todir="C:\Users\User\IdeaProjects\isands-workspace/bundles/osgi/modules/">
+      <fileset includes="*.jar" dir="C:\Users\User\IdeaProjects\isands-workspace/lib" />
+    </copy>
+  </target>
+</project>
