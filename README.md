@@ -18,7 +18,7 @@
 
 ## Видео обзор
 Видео обзор на веб приложение можно посмотреть по ссылке:
-https://drive.google.com/file/d/1Gw3DLZzKuepeTKSWB0mvfOwJOpNIpmkR/view?usp=sharing
+https://drive.google.com/file/d/1Gw3DLZzKuepeTKSWB0mvfOwJOpNIpmkR/view?usp=sharing 
 (если видео не загружается - разрешите cockie на странице)
 
 ### Дополнительно к текстовому документу в сообщении было задание:
